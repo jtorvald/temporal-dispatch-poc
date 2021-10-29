@@ -23,9 +23,9 @@ builds:
     flags:
       - -trimpath
     asmflags:
-      - all=-trimpath={{.Env.GOPATH}}
+      - all=-trimpath={{.Env.PWD}}
     gcflags:
-      - all=-trimpath={{.Env.GOPATH}}
+      - all=-trimpath={{.Env.PWD}}
     ldflags:
       - -s -w
 
