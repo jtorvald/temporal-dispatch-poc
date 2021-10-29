@@ -2,6 +2,7 @@ project_name: temporal-dispatch-poc
 
 builds:
   - # Build macOS, Linux and Windows versions
+    dir: .
     main: ./cmd/server/main.go
     binary: td
     goos:
