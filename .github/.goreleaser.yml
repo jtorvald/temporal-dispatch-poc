@@ -22,10 +22,6 @@ builds:
       - CGO_ENABLED=0
     flags:
       - -trimpath
-    asmflags:
-      - all=-trimpath={{dir .Path}}
-    gcflags:
-      - all=-trimpath={{dir .Path}}
     ldflags:
       - -s -w
 
