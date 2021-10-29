@@ -1,0 +1,48 @@
+project_name: temporal-dispatch-poc
+
+builds:
+  - # Build macOS, Linux and Windows versions
+    main: ./cmd/server/main.go
+    binary: td
+    goos:
+      - linux
+      - darwin
+      - windows
+    goarch:
+      - amd64
+      - arm64
+    targets:
+      - linux_amd64
+      - darwin_amd64
+      - darwin_arm64
+      - windows_amd64
+    mod_timestamp: '{{ .CommitTimestamp }}'
+    env:
+      - CGO_ENABLED=0
+    flags:
+      - -trimpath
+    asmflags:
+      - all=-trimpath={{.Env.GOPATH}}
+    gcflags:
+      - all=-trimpath={{.Env.GOPATH}}
+    ldflags:
+      - -s -w
+
+archives:
+  - # Replacements for GOOS and GOARCH in the archive name.
+    replacements:
+      darwin: macOS
+      linux: Linux
+      windows: Windows
+      amd64: x86_64
+
+    # Can be used to change the archive formats for specific GOOS.
+    format_overrides:
+      - goos: windows
+        format: zip
+
+    # Additional files/template/globs you want to add to the archive.
+    files:
+      - LICENSE
+      - README.md
+
