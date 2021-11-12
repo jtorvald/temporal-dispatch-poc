@@ -13,7 +13,7 @@ import (
 	"time"
 )
 
-func init(){
+func init() {
 	if availableWorkflows == nil {
 		availableWorkflows = make(map[string]interface{})
 	}
@@ -22,18 +22,18 @@ func init(){
 
 // RandomDogWorkflow is a Hello World workflow definition.
 func RandomDogWorkflow(ctx workflow.Context, params map[string]interface{}) (*schema.WorkflowInstanceUpdate, error) {
-/*
-	params:
-	  {
-       "key": "value",
-       "incident_id": 32,
-       "incident_name": "dispatch-singlesproject-default-32",
-       "instance_id": 25
-     }
- */
-	result :=  &schema.WorkflowInstanceUpdate{
+	/*
+	   	params:
+	   	  {
+	          "key": "value",
+	          "incident_id": 32,
+	          "incident_name": "dispatch-singlesproject-default-32",
+	          "instance_id": 25
+	        }
+	*/
+	result := &schema.WorkflowInstanceUpdate{
 		CreatedAt:    workflow.Now(ctx).UTC().Format(format),
-		Artifacts: []*schema.DocumentCreate{},
+		Artifacts:    []*schema.DocumentCreate{},
 		Parameters:   nil,
 		ResourceId:   "",
 		ResourceType: "",
@@ -121,15 +121,15 @@ func FetchRandomDogActivity(ctx context.Context, params map[string]interface{}) 
 	}
 
 	artifact := &schema.DocumentCreate{
-		CreatedAt:                 time.Now().UTC().Format(format),
-		Description:               "Random dog",
-		Evergreen:                 false,
-		Name:                      path.Base(randomDog.Message),
-		ResourceId:                path.Base(randomDog.Message),
-		ResourceType:              "",
-		Filters: []*schema.SearchFilterRead{},
-		UpdatedAt:                 time.Now().UTC().Format(format),
-		Weblink:                   randomDog.Message,
+		CreatedAt:    time.Now().UTC().Format(format),
+		Description:  "Random dog",
+		Evergreen:    false,
+		Name:         path.Base(randomDog.Message),
+		ResourceId:   path.Base(randomDog.Message),
+		ResourceType: "",
+		Filters:      []*schema.SearchFilterRead{},
+		UpdatedAt:    time.Now().UTC().Format(format),
+		Weblink:      randomDog.Message,
 	}
 
 	return artifact, nil

@@ -67,7 +67,7 @@ func (ws *WorkflowClient) StartWorkflowWorker(ctx context.Context) {
 
 	// unsplash
 	w.RegisterWorkflow(RandomUnsplashWorkflow)
-	w.RegisterActivity(InitActivity)
+	w.RegisterActivity(initActivity)
 	w.RegisterActivity(FetchRandomUnsplashActivity)
 
 	err = w.Run(worker.InterruptCh())
@@ -80,15 +80,15 @@ func (ws *WorkflowClient) StartWorkflowWorker(ctx context.Context) {
 // Start kicks of a workflow
 func (ws *WorkflowClient) Start(workflowID string, params map[string]interface{}) *schema.WorkflowInstanceUpdate {
 	/*
-		{
-	   	"workflow_id": "random_unsplash",
-	   	"params": {
-	   		"incident_id": 32,
-	   		"incident_name": "dispatch-default-default-32",
-	   		"instance_id": 43,
-	   		"term": "love"
-	   	}
-	   }
+			{
+		   	"workflow_id": "random_unsplash",
+		   	"params": {
+		   		"incident_id": 32,
+		   		"incident_name": "dispatch-default-default-32",
+		   		"instance_id": 43,
+		   		"term": "love"
+		   	}
+		   }
 
 	*/
 	var startWorkflow interface{}

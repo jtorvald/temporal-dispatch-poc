@@ -3,214 +3,214 @@
 package schema
 
 import (
-    "bytes"
-    "encoding/json"
-    "errors"
+	"bytes"
+	"encoding/json"
+	"errors"
 )
 
-// DocumentCreate 
+// DocumentCreate
 type DocumentCreate struct {
-  CreatedAt string `json:"created_at,omitempty"`
-  Description string `json:"description,omitempty"`
-  Evergreen bool `json:"evergreen,omitempty"`
-  EvergreenLastReminderAt string `json:"evergreen_last_reminder_at,omitempty"`
-  EvergreenOwner string `json:"evergreen_owner,omitempty"`
-  EvergreenReminderInterval int `json:"evergreen_reminder_interval,omitempty"`
-  Filters []*SearchFilterRead `json:"filters,omitempty"`
-  Name string `json:"name"`
-  Project *ProjectRead `json:"project,omitempty"`
-  ResourceId string `json:"resource_id,omitempty"`
-  ResourceType string `json:"resource_type,omitempty"`
-  UpdatedAt string `json:"updated_at,omitempty"`
-  Weblink string `json:"weblink,omitempty"`
+	CreatedAt                 string              `json:"created_at,omitempty"`
+	Description               string              `json:"description,omitempty"`
+	Evergreen                 bool                `json:"evergreen,omitempty"`
+	EvergreenLastReminderAt   string              `json:"evergreen_last_reminder_at,omitempty"`
+	EvergreenOwner            string              `json:"evergreen_owner,omitempty"`
+	EvergreenReminderInterval int                 `json:"evergreen_reminder_interval,omitempty"`
+	Filters                   []*SearchFilterRead `json:"filters,omitempty"`
+	Name                      string              `json:"name"`
+	Project                   *ProjectRead        `json:"project,omitempty"`
+	ResourceId                string              `json:"resource_id,omitempty"`
+	ResourceType              string              `json:"resource_type,omitempty"`
+	UpdatedAt                 string              `json:"updated_at,omitempty"`
+	Weblink                   string              `json:"weblink,omitempty"`
 }
 
-// ExpressionItems 
+// ExpressionItems
 type ExpressionItems struct {
 }
 
-// ParametersItems 
+// ParametersItems
 type ParametersItems struct {
 }
 
-// ProjectRead 
+// ProjectRead
 type ProjectRead struct {
-  Color string `json:"color,omitempty"`
-  Default bool `json:"default,omitempty"`
-  Description string `json:"description,omitempty"`
-  Id int `json:"id,omitempty"`
-  Name string `json:"name"`
+	Color       string `json:"color,omitempty"`
+	Default     bool   `json:"default,omitempty"`
+	Description string `json:"description,omitempty"`
+	Id          int    `json:"id,omitempty"`
+	Name        string `json:"name"`
 }
 
-// SearchFilterRead 
+// SearchFilterRead
 type SearchFilterRead struct {
-  Description string `json:"description,omitempty"`
-  Expression []*ExpressionItems `json:"expression"`
-  Id int `json:"id"`
-  Name string `json:"name"`
-  Type string `json:"type,omitempty"`
+	Description string             `json:"description,omitempty"`
+	Expression  []*ExpressionItems `json:"expression"`
+	Id          int                `json:"id"`
+	Name        string             `json:"name"`
+	Type        string             `json:"type,omitempty"`
 }
 
-// WorkflowInstanceUpdate 
+// WorkflowInstanceUpdate
 type WorkflowInstanceUpdate struct {
-  Artifacts []*DocumentCreate `json:"artifacts,omitempty"`
-  CreatedAt string `json:"created_at,omitempty"`
-  Parameters []*ParametersItems `json:"parameters,omitempty"`
-  ResourceId string `json:"resource_id,omitempty"`
-  ResourceType string `json:"resource_type,omitempty"`
-  RunReason string `json:"run_reason,omitempty"`
-  Status string `json:"status,omitempty"`
-  UpdatedAt string `json:"updated_at,omitempty"`
-  Weblink string `json:"weblink,omitempty"`
+	Artifacts    []*DocumentCreate  `json:"artifacts,omitempty"`
+	CreatedAt    string             `json:"created_at,omitempty"`
+	Parameters   []*ParametersItems `json:"parameters,omitempty"`
+	ResourceId   string             `json:"resource_id,omitempty"`
+	ResourceType string             `json:"resource_type,omitempty"`
+	RunReason    string             `json:"run_reason,omitempty"`
+	Status       string             `json:"status,omitempty"`
+	UpdatedAt    string             `json:"updated_at,omitempty"`
+	Weblink      string             `json:"weblink,omitempty"`
 }
 
 func (strct *DocumentCreate) MarshalJSON() ([]byte, error) {
 	buf := bytes.NewBuffer(make([]byte, 0))
 	buf.WriteString("{")
-    comma := false
-    // Marshal the "created_at" field
-    if comma { 
-        buf.WriteString(",") 
-    }
-    buf.WriteString("\"created_at\": ")
+	comma := false
+	// Marshal the "created_at" field
+	if comma {
+		buf.WriteString(",")
+	}
+	buf.WriteString("\"created_at\": ")
 	if tmp, err := json.Marshal(strct.CreatedAt); err != nil {
 		return nil, err
- 	} else {
- 		buf.Write(tmp)
+	} else {
+		buf.Write(tmp)
 	}
 	comma = true
-    // Marshal the "description" field
-    if comma { 
-        buf.WriteString(",") 
-    }
-    buf.WriteString("\"description\": ")
+	// Marshal the "description" field
+	if comma {
+		buf.WriteString(",")
+	}
+	buf.WriteString("\"description\": ")
 	if tmp, err := json.Marshal(strct.Description); err != nil {
 		return nil, err
- 	} else {
- 		buf.Write(tmp)
+	} else {
+		buf.Write(tmp)
 	}
 	comma = true
-    // Marshal the "evergreen" field
-    if comma { 
-        buf.WriteString(",") 
-    }
-    buf.WriteString("\"evergreen\": ")
+	// Marshal the "evergreen" field
+	if comma {
+		buf.WriteString(",")
+	}
+	buf.WriteString("\"evergreen\": ")
 	if tmp, err := json.Marshal(strct.Evergreen); err != nil {
 		return nil, err
- 	} else {
- 		buf.Write(tmp)
+	} else {
+		buf.Write(tmp)
 	}
 	comma = true
-    // Marshal the "evergreen_last_reminder_at" field
-    if comma { 
-        buf.WriteString(",") 
-    }
-    buf.WriteString("\"evergreen_last_reminder_at\": ")
+	// Marshal the "evergreen_last_reminder_at" field
+	if comma {
+		buf.WriteString(",")
+	}
+	buf.WriteString("\"evergreen_last_reminder_at\": ")
 	if tmp, err := json.Marshal(strct.EvergreenLastReminderAt); err != nil {
 		return nil, err
- 	} else {
- 		buf.Write(tmp)
+	} else {
+		buf.Write(tmp)
 	}
 	comma = true
-    // Marshal the "evergreen_owner" field
-    if comma { 
-        buf.WriteString(",") 
-    }
-    buf.WriteString("\"evergreen_owner\": ")
+	// Marshal the "evergreen_owner" field
+	if comma {
+		buf.WriteString(",")
+	}
+	buf.WriteString("\"evergreen_owner\": ")
 	if tmp, err := json.Marshal(strct.EvergreenOwner); err != nil {
 		return nil, err
- 	} else {
- 		buf.Write(tmp)
+	} else {
+		buf.Write(tmp)
 	}
 	comma = true
-    // Marshal the "evergreen_reminder_interval" field
-    if comma { 
-        buf.WriteString(",") 
-    }
-    buf.WriteString("\"evergreen_reminder_interval\": ")
+	// Marshal the "evergreen_reminder_interval" field
+	if comma {
+		buf.WriteString(",")
+	}
+	buf.WriteString("\"evergreen_reminder_interval\": ")
 	if tmp, err := json.Marshal(strct.EvergreenReminderInterval); err != nil {
 		return nil, err
- 	} else {
- 		buf.Write(tmp)
+	} else {
+		buf.Write(tmp)
 	}
 	comma = true
-    // Marshal the "filters" field
-    if comma { 
-        buf.WriteString(",") 
-    }
-    buf.WriteString("\"filters\": ")
+	// Marshal the "filters" field
+	if comma {
+		buf.WriteString(",")
+	}
+	buf.WriteString("\"filters\": ")
 	if tmp, err := json.Marshal(strct.Filters); err != nil {
 		return nil, err
- 	} else {
- 		buf.Write(tmp)
+	} else {
+		buf.Write(tmp)
 	}
 	comma = true
-    // "Name" field is required
-    // only required object types supported for marshal checking (for now)
-    // Marshal the "name" field
-    if comma { 
-        buf.WriteString(",") 
-    }
-    buf.WriteString("\"name\": ")
+	// "Name" field is required
+	// only required object types supported for marshal checking (for now)
+	// Marshal the "name" field
+	if comma {
+		buf.WriteString(",")
+	}
+	buf.WriteString("\"name\": ")
 	if tmp, err := json.Marshal(strct.Name); err != nil {
 		return nil, err
- 	} else {
- 		buf.Write(tmp)
+	} else {
+		buf.Write(tmp)
 	}
 	comma = true
-    // Marshal the "project" field
-    if comma { 
-        buf.WriteString(",") 
-    }
-    buf.WriteString("\"project\": ")
+	// Marshal the "project" field
+	if comma {
+		buf.WriteString(",")
+	}
+	buf.WriteString("\"project\": ")
 	if tmp, err := json.Marshal(strct.Project); err != nil {
 		return nil, err
- 	} else {
- 		buf.Write(tmp)
+	} else {
+		buf.Write(tmp)
 	}
 	comma = true
-    // Marshal the "resource_id" field
-    if comma { 
-        buf.WriteString(",") 
-    }
-    buf.WriteString("\"resource_id\": ")
+	// Marshal the "resource_id" field
+	if comma {
+		buf.WriteString(",")
+	}
+	buf.WriteString("\"resource_id\": ")
 	if tmp, err := json.Marshal(strct.ResourceId); err != nil {
 		return nil, err
- 	} else {
- 		buf.Write(tmp)
+	} else {
+		buf.Write(tmp)
 	}
 	comma = true
-    // Marshal the "resource_type" field
-    if comma { 
-        buf.WriteString(",") 
-    }
-    buf.WriteString("\"resource_type\": ")
+	// Marshal the "resource_type" field
+	if comma {
+		buf.WriteString(",")
+	}
+	buf.WriteString("\"resource_type\": ")
 	if tmp, err := json.Marshal(strct.ResourceType); err != nil {
 		return nil, err
- 	} else {
- 		buf.Write(tmp)
+	} else {
+		buf.Write(tmp)
 	}
 	comma = true
-    // Marshal the "updated_at" field
-    if comma { 
-        buf.WriteString(",") 
-    }
-    buf.WriteString("\"updated_at\": ")
+	// Marshal the "updated_at" field
+	if comma {
+		buf.WriteString(",")
+	}
+	buf.WriteString("\"updated_at\": ")
 	if tmp, err := json.Marshal(strct.UpdatedAt); err != nil {
 		return nil, err
- 	} else {
- 		buf.Write(tmp)
+	} else {
+		buf.Write(tmp)
 	}
 	comma = true
-    // Marshal the "weblink" field
-    if comma { 
-        buf.WriteString(",") 
-    }
-    buf.WriteString("\"weblink\": ")
+	// Marshal the "weblink" field
+	if comma {
+		buf.WriteString(",")
+	}
+	buf.WriteString("\"weblink\": ")
 	if tmp, err := json.Marshal(strct.Weblink); err != nil {
 		return nil, err
- 	} else {
- 		buf.Write(tmp)
+	} else {
+		buf.Write(tmp)
 	}
 	comma = true
 
@@ -220,135 +220,135 @@ func (strct *DocumentCreate) MarshalJSON() ([]byte, error) {
 }
 
 func (strct *DocumentCreate) UnmarshalJSON(b []byte) error {
-    nameReceived := false
-    var jsonMap map[string]json.RawMessage
-    if err := json.Unmarshal(b, &jsonMap); err != nil {
-        return err
-    }
-    // parse all the defined properties
-    for k, v := range jsonMap {
-        switch k {
-        case "created_at":
-            if err := json.Unmarshal([]byte(v), &strct.CreatedAt); err != nil {
-                return err
-             }
-        case "description":
-            if err := json.Unmarshal([]byte(v), &strct.Description); err != nil {
-                return err
-             }
-        case "evergreen":
-            if err := json.Unmarshal([]byte(v), &strct.Evergreen); err != nil {
-                return err
-             }
-        case "evergreen_last_reminder_at":
-            if err := json.Unmarshal([]byte(v), &strct.EvergreenLastReminderAt); err != nil {
-                return err
-             }
-        case "evergreen_owner":
-            if err := json.Unmarshal([]byte(v), &strct.EvergreenOwner); err != nil {
-                return err
-             }
-        case "evergreen_reminder_interval":
-            if err := json.Unmarshal([]byte(v), &strct.EvergreenReminderInterval); err != nil {
-                return err
-             }
-        case "filters":
-            if err := json.Unmarshal([]byte(v), &strct.Filters); err != nil {
-                return err
-             }
-        case "name":
-            if err := json.Unmarshal([]byte(v), &strct.Name); err != nil {
-                return err
-             }
-            nameReceived = true
-        case "project":
-            if err := json.Unmarshal([]byte(v), &strct.Project); err != nil {
-                return err
-             }
-        case "resource_id":
-            if err := json.Unmarshal([]byte(v), &strct.ResourceId); err != nil {
-                return err
-             }
-        case "resource_type":
-            if err := json.Unmarshal([]byte(v), &strct.ResourceType); err != nil {
-                return err
-             }
-        case "updated_at":
-            if err := json.Unmarshal([]byte(v), &strct.UpdatedAt); err != nil {
-                return err
-             }
-        case "weblink":
-            if err := json.Unmarshal([]byte(v), &strct.Weblink); err != nil {
-                return err
-             }
-        }
-    }
-    // check if name (a required property) was received
-    if !nameReceived {
-        return errors.New("\"name\" is required but was not present")
-    }
-    return nil
+	nameReceived := false
+	var jsonMap map[string]json.RawMessage
+	if err := json.Unmarshal(b, &jsonMap); err != nil {
+		return err
+	}
+	// parse all the defined properties
+	for k, v := range jsonMap {
+		switch k {
+		case "created_at":
+			if err := json.Unmarshal([]byte(v), &strct.CreatedAt); err != nil {
+				return err
+			}
+		case "description":
+			if err := json.Unmarshal([]byte(v), &strct.Description); err != nil {
+				return err
+			}
+		case "evergreen":
+			if err := json.Unmarshal([]byte(v), &strct.Evergreen); err != nil {
+				return err
+			}
+		case "evergreen_last_reminder_at":
+			if err := json.Unmarshal([]byte(v), &strct.EvergreenLastReminderAt); err != nil {
+				return err
+			}
+		case "evergreen_owner":
+			if err := json.Unmarshal([]byte(v), &strct.EvergreenOwner); err != nil {
+				return err
+			}
+		case "evergreen_reminder_interval":
+			if err := json.Unmarshal([]byte(v), &strct.EvergreenReminderInterval); err != nil {
+				return err
+			}
+		case "filters":
+			if err := json.Unmarshal([]byte(v), &strct.Filters); err != nil {
+				return err
+			}
+		case "name":
+			if err := json.Unmarshal([]byte(v), &strct.Name); err != nil {
+				return err
+			}
+			nameReceived = true
+		case "project":
+			if err := json.Unmarshal([]byte(v), &strct.Project); err != nil {
+				return err
+			}
+		case "resource_id":
+			if err := json.Unmarshal([]byte(v), &strct.ResourceId); err != nil {
+				return err
+			}
+		case "resource_type":
+			if err := json.Unmarshal([]byte(v), &strct.ResourceType); err != nil {
+				return err
+			}
+		case "updated_at":
+			if err := json.Unmarshal([]byte(v), &strct.UpdatedAt); err != nil {
+				return err
+			}
+		case "weblink":
+			if err := json.Unmarshal([]byte(v), &strct.Weblink); err != nil {
+				return err
+			}
+		}
+	}
+	// check if name (a required property) was received
+	if !nameReceived {
+		return errors.New("\"name\" is required but was not present")
+	}
+	return nil
 }
 
 func (strct *ProjectRead) MarshalJSON() ([]byte, error) {
 	buf := bytes.NewBuffer(make([]byte, 0))
 	buf.WriteString("{")
-    comma := false
-    // Marshal the "color" field
-    if comma { 
-        buf.WriteString(",") 
-    }
-    buf.WriteString("\"color\": ")
+	comma := false
+	// Marshal the "color" field
+	if comma {
+		buf.WriteString(",")
+	}
+	buf.WriteString("\"color\": ")
 	if tmp, err := json.Marshal(strct.Color); err != nil {
 		return nil, err
- 	} else {
- 		buf.Write(tmp)
+	} else {
+		buf.Write(tmp)
 	}
 	comma = true
-    // Marshal the "default" field
-    if comma { 
-        buf.WriteString(",") 
-    }
-    buf.WriteString("\"default\": ")
+	// Marshal the "default" field
+	if comma {
+		buf.WriteString(",")
+	}
+	buf.WriteString("\"default\": ")
 	if tmp, err := json.Marshal(strct.Default); err != nil {
 		return nil, err
- 	} else {
- 		buf.Write(tmp)
+	} else {
+		buf.Write(tmp)
 	}
 	comma = true
-    // Marshal the "description" field
-    if comma { 
-        buf.WriteString(",") 
-    }
-    buf.WriteString("\"description\": ")
+	// Marshal the "description" field
+	if comma {
+		buf.WriteString(",")
+	}
+	buf.WriteString("\"description\": ")
 	if tmp, err := json.Marshal(strct.Description); err != nil {
 		return nil, err
- 	} else {
- 		buf.Write(tmp)
+	} else {
+		buf.Write(tmp)
 	}
 	comma = true
-    // Marshal the "id" field
-    if comma { 
-        buf.WriteString(",") 
-    }
-    buf.WriteString("\"id\": ")
+	// Marshal the "id" field
+	if comma {
+		buf.WriteString(",")
+	}
+	buf.WriteString("\"id\": ")
 	if tmp, err := json.Marshal(strct.Id); err != nil {
 		return nil, err
- 	} else {
- 		buf.Write(tmp)
+	} else {
+		buf.Write(tmp)
 	}
 	comma = true
-    // "Name" field is required
-    // only required object types supported for marshal checking (for now)
-    // Marshal the "name" field
-    if comma { 
-        buf.WriteString(",") 
-    }
-    buf.WriteString("\"name\": ")
+	// "Name" field is required
+	// only required object types supported for marshal checking (for now)
+	// Marshal the "name" field
+	if comma {
+		buf.WriteString(",")
+	}
+	buf.WriteString("\"name\": ")
 	if tmp, err := json.Marshal(strct.Name); err != nil {
 		return nil, err
- 	} else {
- 		buf.Write(tmp)
+	} else {
+		buf.Write(tmp)
 	}
 	comma = true
 
@@ -358,107 +358,107 @@ func (strct *ProjectRead) MarshalJSON() ([]byte, error) {
 }
 
 func (strct *ProjectRead) UnmarshalJSON(b []byte) error {
-    nameReceived := false
-    var jsonMap map[string]json.RawMessage
-    if err := json.Unmarshal(b, &jsonMap); err != nil {
-        return err
-    }
-    // parse all the defined properties
-    for k, v := range jsonMap {
-        switch k {
-        case "color":
-            if err := json.Unmarshal([]byte(v), &strct.Color); err != nil {
-                return err
-             }
-        case "default":
-            if err := json.Unmarshal([]byte(v), &strct.Default); err != nil {
-                return err
-             }
-        case "description":
-            if err := json.Unmarshal([]byte(v), &strct.Description); err != nil {
-                return err
-             }
-        case "id":
-            if err := json.Unmarshal([]byte(v), &strct.Id); err != nil {
-                return err
-             }
-        case "name":
-            if err := json.Unmarshal([]byte(v), &strct.Name); err != nil {
-                return err
-             }
-            nameReceived = true
-        }
-    }
-    // check if name (a required property) was received
-    if !nameReceived {
-        return errors.New("\"name\" is required but was not present")
-    }
-    return nil
+	nameReceived := false
+	var jsonMap map[string]json.RawMessage
+	if err := json.Unmarshal(b, &jsonMap); err != nil {
+		return err
+	}
+	// parse all the defined properties
+	for k, v := range jsonMap {
+		switch k {
+		case "color":
+			if err := json.Unmarshal([]byte(v), &strct.Color); err != nil {
+				return err
+			}
+		case "default":
+			if err := json.Unmarshal([]byte(v), &strct.Default); err != nil {
+				return err
+			}
+		case "description":
+			if err := json.Unmarshal([]byte(v), &strct.Description); err != nil {
+				return err
+			}
+		case "id":
+			if err := json.Unmarshal([]byte(v), &strct.Id); err != nil {
+				return err
+			}
+		case "name":
+			if err := json.Unmarshal([]byte(v), &strct.Name); err != nil {
+				return err
+			}
+			nameReceived = true
+		}
+	}
+	// check if name (a required property) was received
+	if !nameReceived {
+		return errors.New("\"name\" is required but was not present")
+	}
+	return nil
 }
 
 func (strct *SearchFilterRead) MarshalJSON() ([]byte, error) {
 	buf := bytes.NewBuffer(make([]byte, 0))
 	buf.WriteString("{")
-    comma := false
-    // Marshal the "description" field
-    if comma { 
-        buf.WriteString(",") 
-    }
-    buf.WriteString("\"description\": ")
+	comma := false
+	// Marshal the "description" field
+	if comma {
+		buf.WriteString(",")
+	}
+	buf.WriteString("\"description\": ")
 	if tmp, err := json.Marshal(strct.Description); err != nil {
 		return nil, err
- 	} else {
- 		buf.Write(tmp)
+	} else {
+		buf.Write(tmp)
 	}
 	comma = true
-    // "Expression" field is required
-    // only required object types supported for marshal checking (for now)
-    // Marshal the "expression" field
-    if comma { 
-        buf.WriteString(",") 
-    }
-    buf.WriteString("\"expression\": ")
+	// "Expression" field is required
+	// only required object types supported for marshal checking (for now)
+	// Marshal the "expression" field
+	if comma {
+		buf.WriteString(",")
+	}
+	buf.WriteString("\"expression\": ")
 	if tmp, err := json.Marshal(strct.Expression); err != nil {
 		return nil, err
- 	} else {
- 		buf.Write(tmp)
+	} else {
+		buf.Write(tmp)
 	}
 	comma = true
-    // "Id" field is required
-    // only required object types supported for marshal checking (for now)
-    // Marshal the "id" field
-    if comma { 
-        buf.WriteString(",") 
-    }
-    buf.WriteString("\"id\": ")
+	// "Id" field is required
+	// only required object types supported for marshal checking (for now)
+	// Marshal the "id" field
+	if comma {
+		buf.WriteString(",")
+	}
+	buf.WriteString("\"id\": ")
 	if tmp, err := json.Marshal(strct.Id); err != nil {
 		return nil, err
- 	} else {
- 		buf.Write(tmp)
+	} else {
+		buf.Write(tmp)
 	}
 	comma = true
-    // "Name" field is required
-    // only required object types supported for marshal checking (for now)
-    // Marshal the "name" field
-    if comma { 
-        buf.WriteString(",") 
-    }
-    buf.WriteString("\"name\": ")
+	// "Name" field is required
+	// only required object types supported for marshal checking (for now)
+	// Marshal the "name" field
+	if comma {
+		buf.WriteString(",")
+	}
+	buf.WriteString("\"name\": ")
 	if tmp, err := json.Marshal(strct.Name); err != nil {
 		return nil, err
- 	} else {
- 		buf.Write(tmp)
+	} else {
+		buf.Write(tmp)
 	}
 	comma = true
-    // Marshal the "type" field
-    if comma { 
-        buf.WriteString(",") 
-    }
-    buf.WriteString("\"type\": ")
+	// Marshal the "type" field
+	if comma {
+		buf.WriteString(",")
+	}
+	buf.WriteString("\"type\": ")
 	if tmp, err := json.Marshal(strct.Type); err != nil {
 		return nil, err
- 	} else {
- 		buf.Write(tmp)
+	} else {
+		buf.Write(tmp)
 	}
 	comma = true
 
@@ -468,52 +468,52 @@ func (strct *SearchFilterRead) MarshalJSON() ([]byte, error) {
 }
 
 func (strct *SearchFilterRead) UnmarshalJSON(b []byte) error {
-    expressionReceived := false
-    idReceived := false
-    nameReceived := false
-    var jsonMap map[string]json.RawMessage
-    if err := json.Unmarshal(b, &jsonMap); err != nil {
-        return err
-    }
-    // parse all the defined properties
-    for k, v := range jsonMap {
-        switch k {
-        case "description":
-            if err := json.Unmarshal([]byte(v), &strct.Description); err != nil {
-                return err
-             }
-        case "expression":
-            if err := json.Unmarshal([]byte(v), &strct.Expression); err != nil {
-                return err
-             }
-            expressionReceived = true
-        case "id":
-            if err := json.Unmarshal([]byte(v), &strct.Id); err != nil {
-                return err
-             }
-            idReceived = true
-        case "name":
-            if err := json.Unmarshal([]byte(v), &strct.Name); err != nil {
-                return err
-             }
-            nameReceived = true
-        case "type":
-            if err := json.Unmarshal([]byte(v), &strct.Type); err != nil {
-                return err
-             }
-        }
-    }
-    // check if expression (a required property) was received
-    if !expressionReceived {
-        return errors.New("\"expression\" is required but was not present")
-    }
-    // check if id (a required property) was received
-    if !idReceived {
-        return errors.New("\"id\" is required but was not present")
-    }
-    // check if name (a required property) was received
-    if !nameReceived {
-        return errors.New("\"name\" is required but was not present")
-    }
-    return nil
+	expressionReceived := false
+	idReceived := false
+	nameReceived := false
+	var jsonMap map[string]json.RawMessage
+	if err := json.Unmarshal(b, &jsonMap); err != nil {
+		return err
+	}
+	// parse all the defined properties
+	for k, v := range jsonMap {
+		switch k {
+		case "description":
+			if err := json.Unmarshal([]byte(v), &strct.Description); err != nil {
+				return err
+			}
+		case "expression":
+			if err := json.Unmarshal([]byte(v), &strct.Expression); err != nil {
+				return err
+			}
+			expressionReceived = true
+		case "id":
+			if err := json.Unmarshal([]byte(v), &strct.Id); err != nil {
+				return err
+			}
+			idReceived = true
+		case "name":
+			if err := json.Unmarshal([]byte(v), &strct.Name); err != nil {
+				return err
+			}
+			nameReceived = true
+		case "type":
+			if err := json.Unmarshal([]byte(v), &strct.Type); err != nil {
+				return err
+			}
+		}
+	}
+	// check if expression (a required property) was received
+	if !expressionReceived {
+		return errors.New("\"expression\" is required but was not present")
+	}
+	// check if id (a required property) was received
+	if !idReceived {
+		return errors.New("\"id\" is required but was not present")
+	}
+	// check if name (a required property) was received
+	if !nameReceived {
+		return errors.New("\"name\" is required but was not present")
+	}
+	return nil
 }

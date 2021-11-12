@@ -13,7 +13,7 @@ import (
 	"time"
 )
 
-type workflowEndpoint struct{
+type workflowEndpoint struct {
 	workflowClient *workflows.WorkflowClient
 }
 
@@ -110,18 +110,18 @@ func (h *workflowEndpoint) GetWorkflowStatus(w http.ResponseWriter, r *http.Requ
 
 //PostRunWorkflow handles to post request to the api to start a workflow
 func (h *workflowEndpoint) PostRunWorkflow(w http.ResponseWriter, r *http.Request) {
-/*
-	{
-   	"workflow_id": "random_unsplash",
-   	"params": {
-   		"incident_id": 32,
-   		"incident_name": "dispatch-default-default-32",
-   		"instance_id": 43,
-   		"term": "love"
-   	}
-   }
+	/*
+	   	{
+	      	"workflow_id": "random_unsplash",
+	      	"params": {
+	      		"incident_id": 32,
+	      		"incident_name": "dispatch-default-default-32",
+	      		"instance_id": 43,
+	      		"term": "love"
+	      	}
+	      }
 
-*/
+	*/
 	req := &workflowRunRequest{}
 
 	// Try to decode the request body into the struct. If there is an error,

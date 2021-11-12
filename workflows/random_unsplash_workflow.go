@@ -60,7 +60,7 @@ func RandomUnsplashWorkflow(ctx workflow.Context, params map[string]interface{})
 		logger.Info("SetQueryHandler failed: " + err.Error())
 		return result, err
 	}
-	err = workflow.ExecuteActivity(ctx, InitActivity, params).Get(ctx, &result.Status)
+	err = workflow.ExecuteActivity(ctx, initActivity, params).Get(ctx, &result.Status)
 	if err != nil {
 		result.Status = "Failed"
 		logger.Error("InitActivity failed.", "Error", err)
@@ -102,12 +102,12 @@ func RandomUnsplashWorkflow(ctx workflow.Context, params map[string]interface{})
 	return result, nil
 }
 
-// InitActivity
-func InitActivity(ctx context.Context, params map[string]interface{}) (string ,error) {
+// initActivity
+func initActivity(ctx context.Context, params map[string]interface{}) (string, error) {
 	return "Running", nil
 }
 
-//FetchRandomUnsplashActivity calls unsplash to get a random photo
+// FetchRandomUnsplashActivity calls unsplash to get a random photo
 func FetchRandomUnsplashActivity(ctx context.Context, params map[string]interface{}) (*schema.DocumentCreate, error) {
 	logger := activity.GetLogger(ctx)
 	logger.Info("FetchRandomUnsplashActivity", "name", params["workflow_instance_id"])
@@ -136,7 +136,7 @@ func FetchRandomUnsplashActivity(ctx context.Context, params map[string]interfac
 
 	var filename string
 	if parts, err := url.Parse(newLocation); err != nil {
-		filename =  path.Base(newLocation)
+		filename = path.Base(newLocation)
 	} else {
 		filename = path.Base(parts.Path)
 	}

@@ -13,7 +13,7 @@ import (
 )
 
 // turned off go:generate schema-generate -p schema -i ../../schema/dispatch-workflow.schema.json -o ../../schema/workflow_schema_generated.go
-func main(){
+func main() {
 
 	var apiAddr, temporalAddr, queue string
 
@@ -24,7 +24,7 @@ func main(){
 
 	ctx, cancel := context.WithCancel(context.Background())
 
-	go func(){
+	go func() {
 		if err := run(ctx, apiAddr, temporalAddr, queue); err != nil {
 			panic(err)
 		}
